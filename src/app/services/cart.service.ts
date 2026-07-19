@@ -24,4 +24,8 @@ export class CartService {
   isInCart(gameId: number): boolean {
     return this.games.some((g) => g.id === gameId);
   }
+
+  clear(): void {
+    this.games = [];
+  }
 }

@@ -23,3 +23,6 @@ Tienda de videojuegos donde el usuario puede navegar un catálogo paginado (jueg
 - Angular 21
 - Bootstrap 5
 - MockAPI
+
+## Iconos
+[https://www.namecheap.com](https://www.namecheap.com/visual/font-generator/)
