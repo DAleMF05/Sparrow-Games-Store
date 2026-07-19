@@ -1,0 +1,40 @@
+<div class="card mb-4">
+  <div class="card-header fw-semibold">Agregar nuevo juego</div>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Nombre</label>
+          <input class="form-control" formControlName="name" placeholder="Nombre del juego">
+          @if (form.get('name')?.invalid && form.get('name')?.touched) {
+            <small class="text-danger">Mínimo 3 caracteres.</small>
+          }
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Precio</label>
+          <input class="form-control" type="number" formControlName="price" placeholder="Precio en pesos">
+          @if (form.get('price')?.invalid && form.get('price')?.touched) {
+            <small class="text-danger">Precio requerido, mínimo 1.</small>
+          }
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Género</label>
+          <input class="form-control" formControlName="genre" placeholder="Género del juego">
+          @if (form.get('genre')?.invalid && form.get('genre')?.touched) {
+            <small class="text-danger">Género requerido.</small>
+          }
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">URL de imagen</label>
+          <input class="form-control" formControlName="image" placeholder="https://...">
+          @if (form.get('image')?.invalid && form.get('image')?.touched) {
+            <small class="text-danger">URL de imagen requerida.</small>
+          }
+        </div>
+      </div>
+      <div class="mt-3">
+        <button class="btn btn-success" type="submit" [disabled]="form.invalid">Agregar juego</button>
+      </div>
+    </form>
+  </div>
+</div>

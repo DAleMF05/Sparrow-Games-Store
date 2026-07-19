@@ -1,0 +1,44 @@
+<div class="card shadow-sm sticky-top" style="top: 1rem">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    <span class="fw-semibold">🛒 Carrito</span>
+    <span class="badge text-bg-secondary">{{ count }}</span>
+  </div>
+  <div class="card-body">
+    @if (games.length > 0) {
+      <ul class="list-group list-group-flush">
+        @for (game of games; track game.id) {
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-2">
+              @if (game.image) {
+                <img [src]="game.image" class="rounded" style="width: 40px; height: 40px; object-fit: cover;" [alt]="game.name">
+              }
+              <div>
+                <span class="fw-semibold">{{ game.name }}</span>
+                <br>
+                <small class="text-muted">{{ game.price | currency:'ARS':'symbol-narrow':'1.0-0' }}</small>
+              </div>
+            </div>
+            <button
+              class="btn btn-sm btn-outline-danger"
+              type="button"
+              (click)="removeGame(game.id)">
+              Quitar
+            </button>
+          </li>
+        }
+      </ul>
+      <hr>
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <span class="fw-bold">Total:</span>
+        <span class="fw-bold">{{ total | currency:'ARS':'symbol-narrow':'1.0-0' }}</span>
+      </div>
+    } @else {
+      <p class="text-muted small mb-0">Tu carrito está vacío.</p>
+    }
+  </div>
+  <div class="card-footer d-grid">
+    <button class="btn btn-sm btn-primary" type="button" [disabled]="count === 0">
+      Comprar
+    </button>
+  </div>
+</div>
