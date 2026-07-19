@@ -38,10 +38,8 @@ export class GameList implements OnInit, OnDestroy {
   }
 
   loadApiGames(page: number): void {
-    console.log('[loadApiGames] page requested:', page);
     this.subscription?.unsubscribe();
     this.subscription = this.gameService.getGames(page, 6).subscribe((games) => {
-      console.log('[loadApiGames] response:', games.map(g => g.name));
       this.apiGames = games;
       this.hasMorePages = games.length === 6;
       this.cdr.detectChanges();
@@ -58,21 +56,14 @@ export class GameList implements OnInit, OnDestroy {
   }
 
   nextPage(): void {
-    console.log('[nextPage] currentPage before:', this.currentPage);
     this.currentPage++;
-    console.log('[nextPage] currentPage after:', this.currentPage, '→ API page:', this.currentPage - 1);
     this.loadApiGames(this.currentPage - 1);
   }
 
   prevPage(): void {
-    console.log('[prevPage] currentPage before:', this.currentPage);
     this.currentPage--;
-    console.log('[prevPage] currentPage after:', this.currentPage);
     if (this.currentPage > 1) {
-      console.log('[prevPage] → API page:', this.currentPage - 1);
       this.loadApiGames(this.currentPage - 1);
-    } else {
-      console.log('[prevPage] on page 1, not loading API');
     }
   }
 
