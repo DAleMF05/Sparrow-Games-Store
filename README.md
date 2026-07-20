@@ -25,4 +25,5 @@ Tienda de videojuegos donde el usuario puede navegar un catálogo paginado (jueg
 - MockAPI
 
 ## Iconos
-[https://www.namecheap.com](https://www.namecheap.com/visual/font-generator/)
+- [https://www.namecheap.com](https://www.namecheap.com/visual/font-generator/)
+- [https://emojiterra.com](https://emojiterra.com/es/)
